@@ -1,81 +1,65 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <!-- Barra superior -->
+    <q-header elevated class="bg-dark text-yellow">
       <q-toolbar>
-        <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
-
-        <q-toolbar-title> Quasar App </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+        <q-toolbar-title class="text-right"> Bienvenid@, User </q-toolbar-title>
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
-      <q-list>
-        <q-item-label header> Essential Links </q-item-label>
+    <!-- Barra lateral -->
+    <q-drawer
+      show-if-above
+      v-model="leftDrawerOpen"
+      side="left"
+      bordered
+      class="bg-dark text-white"
+    >
+      <div class="q-pa-md flex flex-center column">
+        <q-avatar size="80px">
+          <img src="/src/assets/Logo.png" alt="Logo" />
+        </q-avatar>
+        <div class="text-yellow text-h6 q-mt-sm">SMARTLOT</div>
+      </div>
 
-        <EssentialLink v-for="link in linksList" :key="link.title" v-bind="link" />
+      <q-list padding>
+        <q-item clickable v-ripple>
+          <q-item-section>Inicio</q-item-section>
+        </q-item>
+
+        <q-item clickable v-ripple>
+          <q-item-section>Parqueaderos</q-item-section>
+        </q-item>
+
+        <q-item clickable v-ripple>
+          <q-item-section>Lotes</q-item-section>
+        </q-item>
+
+        <q-separator spaced />
+
+        <q-item clickable v-ripple>
+          <q-item-section>Ayuda</q-item-section>
+        </q-item>
+
+        <q-item clickable v-ripple>
+          <q-item-section>Contáctanos</q-item-section>
+        </q-item>
+
+        <q-item clickable v-ripple>
+          <q-item-section>Cerrar sesión</q-item-section>
+        </q-item>
       </q-list>
     </q-drawer>
 
+    <!-- Contenido principal -->
     <q-page-container>
-      <router-view />
+      <q-page class="q-pa-md bg-grey-9 text-white"> </q-page>
     </q-page-container>
   </q-layout>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
 
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev',
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework',
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev',
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev',
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev',
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev',
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev',
-  },
-]
-
-const leftDrawerOpen = ref(false)
-
-function toggleLeftDrawer() {
-  leftDrawerOpen.value = !leftDrawerOpen.value
-}
+const leftDrawerOpen = ref(true)
 </script>

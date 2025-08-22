@@ -1,12 +1,34 @@
 const routes = [
+  // Redirigir la raíz al login
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
+    redirect: '/login',
   },
 
-  // Always leave this as last one,
-  // but you can also remove it
+  {
+    path: '/login',
+    component: () => import('layouts/LoginLayout.vue'),
+    children: [
+      {
+        path: '',
+        name: 'login',
+        component: () => import('pages/UserLoginPage.vue'),
+      },
+    ],
+  },
+
+  {
+    path: '/home',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      {
+        path: '',
+        name: 'home',
+        component: () => import('pages/IndexPage.vue'),
+      },
+    ],
+  },
+
   {
     path: '/:catchAll(.*)*',
     component: () => import('pages/ErrorNotFound.vue'),

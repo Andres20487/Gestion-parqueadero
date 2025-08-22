@@ -11,7 +11,6 @@
         <q-separator spaced color="accent" />
       </div>
 
-      <!-- Main Call to Action -->
       <div class="row q-col-gutter-lg q-mb-xl">
         <div class="col-12 col-md-6 flex flex-center">
           <q-img
