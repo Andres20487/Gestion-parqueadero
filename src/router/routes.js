@@ -1,12 +1,7 @@
 const routes = [
-  // Redirigir la raíz al login
+  // Ruta de Login
   {
     path: '/',
-    redirect: '/login',
-  },
-
-  {
-    path: '/login',
     component: () => import('layouts/LoginLayout.vue'),
     children: [
       {
@@ -17,18 +12,25 @@ const routes = [
     ],
   },
 
+  // Rutas principales después de login
   {
-    path: '/home',
+    path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       {
-        path: '',
-        name: 'home',
-        component: () => import('pages/IndexPage.vue'),
+        path: 'inicio',
+        name: 'inicio',
+        component: () => import('pages/InicioPage.vue'),
+      },
+      {
+        path: 'parqueaderos',
+        name: 'parqueaderos',
+        component: () => import('pages/ParqueaderosPage.vue'),
       },
     ],
   },
 
+  // Página de error
   {
     path: '/:catchAll(.*)*',
     component: () => import('pages/ErrorNotFound.vue'),

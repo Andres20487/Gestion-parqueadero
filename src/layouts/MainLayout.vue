@@ -23,15 +23,15 @@
       </div>
 
       <q-list padding>
-        <q-item clickable v-ripple>
+        <q-item clickable v-ripple to="/inicio">
           <q-item-section>Inicio</q-item-section>
         </q-item>
 
-        <q-item clickable v-ripple>
+        <q-item clickable v-ripple to="/parqueaderos">
           <q-item-section>Parqueaderos</q-item-section>
         </q-item>
 
-        <q-item clickable v-ripple>
+        <q-item clickable v-ripple to="/lotes">
           <q-item-section>Lotes</q-item-section>
         </q-item>
 
@@ -45,7 +45,7 @@
           <q-item-section>Contáctanos</q-item-section>
         </q-item>
 
-        <q-item clickable v-ripple>
+        <q-item clickable v-ripple to="/login">
           <q-item-section>Cerrar sesión</q-item-section>
         </q-item>
       </q-list>
@@ -53,13 +53,13 @@
 
     <!-- Contenido principal -->
     <q-page-container>
-      <q-page class="q-pa-md bg-grey-9 text-white"> </q-page>
+      <router-view />
+      <!-- Aquí se cargan las páginas -->
     </q-page-container>
   </q-layout>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-
 const leftDrawerOpen = ref(true)
 </script>

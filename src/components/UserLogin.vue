@@ -47,6 +47,7 @@
                 :name="showPassword ? 'visibility_off' : 'visibility'"
                 class="cursor-pointer"
                 @click="showPassword = !showPassword"
+                color="secondary"
               />
             </template>
           </q-input>
@@ -62,7 +63,7 @@
           color="grey-8"
           text-color="white"
           class="full-width"
-          @click="$router.push('/')"
+          @click="$router.push('/inicio')"
         />
       </q-card-actions>
     </q-card>
