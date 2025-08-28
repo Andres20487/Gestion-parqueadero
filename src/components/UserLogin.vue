@@ -52,7 +52,9 @@
             </template>
           </q-input>
           <div class="text-right q-mt-xs">
-            <a href="#" class="text-yellow text-caption">¿Olvidó su contraseña?</a>
+            <router-link to="/recuperar" class="text-yellow text-caption">
+              ¿Olvidó su contraseña?
+            </router-link>
           </div>
         </div>
       </q-card-section>

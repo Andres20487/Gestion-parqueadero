@@ -9,6 +9,11 @@ const routes = [
         name: 'login',
         component: () => import('pages/UserLoginPage.vue'),
       },
+      {
+        path: 'recuperar',
+        name: 'recuperar',
+        component: () => import('pages/UserForgotPage.vue'),
+      },
     ],
   },
 
