@@ -21,6 +21,7 @@
                 class="col"
                 bg-color="white"
                 color="black"
+                :disable="loading"
               />
               <q-btn
                 label="Enviar"
@@ -28,6 +29,7 @@
                 text-color="white"
                 class="col-auto"
                 type="submit"
+                :loading="loading"
               />
             </div>
           </q-form>
@@ -44,18 +46,35 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useQuasar } from 'quasar'
 
+const $q = useQuasar()
 const email = ref('')
+const loading = ref(false)
 
 function recuperar() {
   if (!email.value) {
-    this.$q.notify({
+    $q.notify({
       type: 'negative',
       message: 'Por favor ingrese un correo válido',
+      position: 'top',
+      timeout: 2000,
     })
     return
   }
-  console.log('Recuperar contraseña para:', email.value)
-  // Aquí conectas con tu API
+
+  loading.value = true
+
+  // 🔥 Simular "envío" del correo
+  setTimeout(() => {
+    loading.value = false
+    $q.notify({
+      type: 'positive',
+      message: 'El correo fue enviado satisfactoriamente 📧',
+      position: 'top',
+      timeout: 2500,
+    })
+    email.value = ''
+  }, 1500)
 }
 </script>
